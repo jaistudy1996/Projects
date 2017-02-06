@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sales tax calculator</title>
+		<link rel="stylesheet" type="text/css" href="sales.css">
+		<script type="text/javascript" src="sales.js"></script>
+	</head>
+	<body>
+		<div id="content">
+			<h1>Sales tax calculator</h1>
+			<p>Enter values and check sales tax.</p>
+
+			<div id="taxCalc">
+				<label for="subtotal">Subtotal</label>
+				<input type="text" id="subtotal"/><br/>
+
+				<label for="taxRate">Tax Rate: </label>
+				<input type="text" id="taxRate"/><br/>
+
+				<label for="salesTax">Sales tax: </label>
+				<input type="text" id="salesTax"/><br/>
+
+				<label for="total">Total: </label>
+				<input type="text" id="total" disabled="disabled"/><br/>
+
+				<label>&nbsp;</label>
+				<input type="button" id="calculate" value="Calculate"/><br/>
+			</div>
+		</div>
+	</body>
+</html>

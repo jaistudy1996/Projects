@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head><title>Dating website</title></head>
+	<style type="text/css">
+		fieldset{
+			background: lightyellow;
+			border: 10px solid yellow;
+			margin-bottom: 10px;
+			width: 720px;
+		}
+
+		label{
+			display: inline-block;
+			text-align: center;
+		}
+
+		label:hover {font-size: 40px;}
+		/*input:hover {font-size: 40px;}*/
+
+		input{
+			display: inline-block;
+		}
+
+		textarea{
+			width: 360px;
+			height: 50px;
+		}
+	</style>
+
+	<body>
+
+	<h1>Please enter details for our dating website!</h1>
+
+	<form method="post" action="https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php" enctype="multipart/form-data">
+		<fieldset>
+			<legend>Your face</legend>
+			<label for="image">Your face: <input type="file" name="image" required></label>
+			<br>
+			<label>Image preview: <img id="preview"/></label>
+		</fieldset><br>
+
+		<fieldset>
+			<legend>Your general details</legend>
+			<label>Name: <input type="text" placeholder="Your full name " required></label><br>
+			<label>Gender: <input type="radio" name="gender" width="auto">Male<input type="radio" name="gender" required width="auto">Female</label><br>
+			<label>Age: <input type="number" name="age" required></label><br>
+			<label>Date of birth: <input type="date" name="dob"></label><br>
+			<label>Favourite color: <input type="color" name="color"></label><br>
+			<label>Which country: 
+				<select name="country">
+					<option selected disabled>No selection</option>
+					<option>United States</option>
+					<option>China</option>
+					<option>India</option>
+					<option>Japan</option>
+					<option>Canada</option>
+					<option>Russia</option>
+				</select>
+			</label>
+		</fieldset><br>
+
+		<fieldset>
+			<legend>Your indicators</legend>
+			<label>Height: Short <input type="range" min="0" max="100" name="Height"> Tall</label><br>
+			<label>Salary: Poor <input type="range" min="0" max="100" name="Salary"> Rich</label>
+		</fieldset><br>
+
+		<fieldset>
+			<legend>Your contact information</legend>
+			<label>Email: <input type="email" required name="email"></label><br>
+			<label>Mobile: <input type="tel" name="Mobile"></label><br>
+			<label>Address: <textarea name="address"></textarea></label><br>
+			<label>Method to contact you: <input type="checkbox" name="contact" width="auto">Email <input type="checkbox" name="contact" width="auto">Whatsapp <input type="checkbox" name="contact" width="auto">In-app chat</label>
+		</fieldset>
+		<br/>
+		<input type="submit" value="Submit">
+	</form>
+	</body>
+</html>
