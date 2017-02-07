@@ -24,9 +24,28 @@ var Blog = mongoose.model('Blog', blogSchema);
 // Define schema:
 var animalSchema = schema({name: String, type: String});
 
+// This is a instance method.
 animalSchema.methods.findSimilarTypes = function(callback){
 	return this.model('Animal').find({type: this.type}, callback);
 }
+
+// This is a statis method.  == work with Model.
+animalSchema.statics.findByName = function(name, callback){
+	return this.find({name: new RegExp(name, 'i')}, callback);
+}
+
+// Query Helper
+animalSchema.query.fingByName = function(name){
+	return this.find({name: new RegExp(name, 'i')});
+}
+
+// Creating an index
+animalSchema.index({name: 1}); // This is on schema level.
+
+// Setting up Virtuals: they are getters and setters that only persist in mongoose.
+animalSchema.virtual('fullName').get(function(){
+	return this.name + ' ' + this.type;
+});
 
 // Define a model
 var Animal = mongoose.model('Animal', animalSchema);
@@ -38,19 +57,25 @@ dog2.save(function(err, result){
 		console.log(result);
 	})
 
-	Animal.find({}).remove({type:"dog"}, function(err, result){
-		// 
+	// Instance method
+	dog2.findSimilarTypes(function(err, result){
+		if(err){
+			console.log(err);
+			return;
+		}
+		console.log(result);
 	});
-});
 
+	// Static method
+	Animal.findByName('g', function(err, result){
+		console.log(result);
+		Animal.find({}).remove({type:"dog"}, function(err, result){});
+	});
 
-// This is a instance method.
-dog2.findSimilarTypes(function(err, result){
-	if(err){
-		console.log(err);
-		return;
-	}
-	console.log(result);
+	// Query helper
+	Animal.find().byName('fido').exec(function(err, animals) {
+  		console.log(animals);
+	});
 });
 
 
