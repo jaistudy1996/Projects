@@ -29,6 +29,21 @@ db.once('open', function(){
 	console.log(silence.name);
 	silence.speak();
 
-	var fluffy = new Kitten(); 
+	var fluffy = new Kitten({name: "fluffy"}); 
 	fluffy.speak(); // when name is not defined this.name is supposed to be false.
+
+	fluffy.save(function (err, fluffy) {
+  		if (err) return console.error(err);
+  		fluffy.speak();
+	});
+
+	Kitten.remove({name: 'fluffy'}, function(err, result){
+		if(err){
+			console.log("err: ", err);
+		}
+		else{
+			console.log("result: ", result);
+		}
+	});
+
 });
