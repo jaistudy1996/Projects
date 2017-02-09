@@ -37,3 +37,10 @@ var myDict = ["item1": "1", "item2": "2"]
 // TODO find out about how to print dictionaries in swift
 print(myArray[2])
 
+
+// Initializing empty array or dictionary
+let emptyArray = [String]()
+let emptyDict = [String: Float]()
+// if type info is known use empty [] and [:] for array and dict respectively.
+
+
