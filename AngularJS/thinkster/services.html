@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Angular Services</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular.min.js"></script>
+    <script type="text/javascript" src="services.js"></script>
+</head>
+<body>
+	<div ng-app="app">
+		<h1>Services</h1>
+		<div ng-controller="ListCtrl as list">
+			<p ng-repeat="message in list.messages">{{message.id}}: {{message.text}}</p>
+		</div>
+		<div ng-controller="PostCtrl as post">
+			<form ng-submit="post.post(post.newMessage)">
+				<input type="text" name="message" ng-model="post.newMessage">
+				<button type="submit">Add message</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
