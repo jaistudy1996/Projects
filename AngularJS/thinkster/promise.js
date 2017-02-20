@@ -10,18 +10,36 @@
 // 	}
 // }
 
+// Adding reject functionality.
+
+// function getData($timeout, $q){
+// 	return function(){
+// 		var defer = $q.defer(); // Define a promise
+// 		$timeout(function(){
+// 			if(Math.round(Math.random())){
+// 				defer.resolve("Data has been received.");
+// 			}
+// 			else{
+// 				defer.reject("Rejected!");
+// 			}
+// 		}, 2000);
+// 		return defer.promise;
+// 	}
+// }
+
+// Use $q as it is. 
 function getData($timeout, $q){
 	return function(){
-		var defer = $q.defer(); // Define a promise
-		$timeout(function(){
-			if(Math.round(Math.random())){
-				defer.resolve("Data has been received.");
-			}
-			else{
-				defer.reject("Rejected!");
-			}
-		}, 2000);
-		return defer.promise;
+		return $q(function(resolve, reject){
+			$timeout(function(){
+				if(Math.round(Math.random())){
+					resolve("Data was received");
+				}
+				else{
+					reject("Rejected.");
+				}
+			});
+		});
 	}
 }
 
