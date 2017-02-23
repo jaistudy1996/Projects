@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Filter in AngularJS</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular.min.js"></script>
+	<script type="text/javascript" src="filter.js"></script>
+</head>
+<body ng-app="app">
+	<div ng-controller="control as ctrl">
+		<input type="text" name="string" ng-model="ctrl.myString">
+		<h3>{{ctrl.myString | capitalize}}</h3>
+		<input type="text" name="search_field" ng-model="search_field">
+		<p ng-repeat="person in ctrl.list | filter: search_field">{{person.name}}</p>
+	</div>
+</body>
+</html>
